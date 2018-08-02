@@ -8,6 +8,7 @@ const methodOverride = require('method-override');
 const logger = require('morgan');
 const helmet = require('helmet');
 const errorhandler = require('errorhandler');
+const cors = require('cors');
 /**
  * Create Express server.
  */
@@ -18,6 +19,7 @@ const app = express();
  */
 app.use(compression());
 app.use(helmet());
+app.use(cors());
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));

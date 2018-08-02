@@ -1,14 +1,13 @@
-const words = require('./words').default;
+const words = require('./words');
 
 exports.getWord = (req, res) => {
-  try {
-    const queryCondition = req.query.word;
-    console.log(`queryCondition ===>`, queryCondition);
-    console.log('--------------------------');
-    const results = words.filter(word => new RegExp(`^${req.query.word}`).test(word));
-    res.json({ data: results });
-    // res.json('hello world');
-  } catch (error) {
-    res.json({ message: error });
-  }
+	try {
+		const queryCondition = req.query.word;
+		const results = words.filter(word => {
+			return new RegExp(`^${queryCondition}`).test(word);
+		});
+		res.json({ data: results });
+	} catch (error) {
+		res.json({ message: 'error' });
+	}
 };
