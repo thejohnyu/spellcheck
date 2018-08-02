@@ -30,6 +30,8 @@ class App extends Component {
 	}
 
 	render() {
+		const { data } = this.state;
+		console.log('data ===>', data);
 		return (
 			<div className="App">
 				<header className="App-header">
@@ -46,7 +48,7 @@ class App extends Component {
 							onChange={this.onChange}
 						/>
 					</form>
-					<ul>{this.state.data.map((word, i) => <li key={i}>{word}</li>)}</ul>
+					<ul>{data.map((word, i) => <li key={i}>{word}</li>)}</ul>
 				</div>
 			</div>
 		);
