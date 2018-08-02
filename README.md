@@ -5,5 +5,11 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 3. `npm install && cd client && npm install && cd ..`
 4. `npm run dev`
 
+
 ## Node/Express running on port 5000
+
+Go to server/controllers/search.controller.js
+
 ## React running on port 3000
+
+Go to client/src/app.js
