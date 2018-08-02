@@ -1,7 +1,25 @@
 const words = require('./words')
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'
 
+exports.hashObj = (words) => {
+  console.log('words ======>', words)
+  return words.reduce((acc, cur) => {
+    console.log('cur ===>', cur)
+    if (acc[cur] === undefined) {
+      console.log('did i make it ?')
+      acc[cur] = 1
+      console.log('acc ===>', acc)
+    }else {
+      acc[cur]++
+    }
+  }, {})
+}
+
 exports.stringDistance = query => {
+  console.log('starting... inside stringDistance')
+  const dictionary = module.exports.hashObj(words)
+  console.log('did i break?')
+  console.log('dictionary ====>', dictionary)
   const word = query.toLowerCase().split('')
   const result = []
 
@@ -49,9 +67,11 @@ exports.stringDistance = query => {
 
 exports.getWord = (req, res) => {
   try {
+    console.log('starting.... inside getWord')
     const queryCondition = req.query.word
     // Not Complete Spell check
     const results = module.exports.stringDistance(queryCondition)
+
     // const results = words.filter(word => {
     //   return new RegExp(`^${queryCondition}`).test(word)
     // })
