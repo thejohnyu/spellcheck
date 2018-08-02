@@ -6,5 +6,5 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 4. cd client --> npm install
 5. npm run dev
 
-##Node/Express running on port 5000
-##React running on port 3000
+## Node/Express running on port 5000
+## React running on port 3000
