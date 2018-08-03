@@ -1,8 +1,8 @@
 const words = require('./words')
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'
-const WORD_COUNTS = HashObj(words)
+const WORD_COUNTS = getWordCount(words)
 
-function HashObj (arr) {
+function getWordCount (arr) {
   const result = arr.reduce((acc, word) => {
     if (acc[word] === undefined) {
       acc[word] = 1
@@ -66,7 +66,7 @@ function correctWord (word) {
   let maxCount = 0
   let correctWord = word
   const editDistance1Words = editDistance1(word)
-  const editDistance2Words = editDistance1Words.reduce((acc, cur) => acc.concat(editDistance1(cur)), [])
+
 
   for (var i = 0; i < editDistance1Words.length; i++) {
     if (editDistance1Words[i] in WORD_COUNTS) {
@@ -76,9 +76,10 @@ function correctWord (word) {
       }
     }
   }
-
+  console.log('--------------------------');
   let maxCount2 = 0
   let correctWord2 = correctWord
+  const editDistance2Words = editDistance1Words.reduce((acc, cur) => acc.concat(editDistance1(cur)), [])
 
   for (var i = 0; i < editDistance2Words.length; i++) {
     if (editDistance2Words[i] in WORD_COUNTS) {
@@ -118,12 +119,4 @@ exports.getWord = (req, res) => {
   }
 }
 
-exports.autoComplete = (req, res) => {
-  try {
-    console.log('Starting....autoComplete')
-    const result = 'HELLO!'
-    res.json({ autoComplete: result, success: true, error: false})
-  } catch(error) {
-    console.log('error')
-  }
-}
+
