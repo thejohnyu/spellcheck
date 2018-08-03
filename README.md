@@ -1,8 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app) && [MERN-boilerplate](https://github.com/thejohnyu/MERN-boilerplate.git)
 
 
-1. `git clone https://github.com/thejohnyu/word-search.git`
-2. `cd word-search`
+1. `git clone https://github.com/thejohnyu/spellcheck.git`
+2. `cd spellcheck`
 3. `npm install && cd client && npm install && cd ..`
 4. `npm run dev`
 
