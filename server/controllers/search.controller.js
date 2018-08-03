@@ -102,18 +102,28 @@ function correctWord (word) {
   }
 }
 
-function autoComplete (arr, word) {
-  return arr.filter((cur) => {
-    return new RegExp(`^${word}`).test(cur)
-  })
-}
-
+// function autoComplete (word) {
+//   return words.filter((cur) => {
+//     return new RegExp(`^${word}`).test(cur)
+//   })
+// }
+// const autoCompleteData = autoComplete(req.query.word)
 exports.getWord = (req, res) => {
   try {
-    const queryCondition = correctWord(req.query.word)
-    const autoCompleteData = autoComplete(words, req.query.word)
-    res.json({ spellcheck: queryCondition, success: true, error: false})
+    const queryCondition = req.query.word
+    const result = correctWord(queryCondition)
+    res.json({ spellcheck: result, success: true, error: false})
   } catch (error) {
     res.json({ message: error, success: false, error: true})
+  }
+}
+
+exports.autoComplete = (req, res) => {
+  try {
+    console.log('Starting....autoComplete')
+    const result = 'HELLO!'
+    res.json({ autoComplete: result, success: true, error: false})
+  } catch(error) {
+    console.log('error')
   }
 }
