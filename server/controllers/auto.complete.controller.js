@@ -120,6 +120,7 @@ function findAllWords(node, arr) {
     findAllWords(node.children[child], arr);
   }
 }
+
 let trie = new Trie();
 
 function insertWords(words){
