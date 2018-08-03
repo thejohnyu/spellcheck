@@ -8,13 +8,17 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 
 # Node running on port 5000 ---- React running on port 3000
-
+### Spell Check
 1. `API === localhost:3000/api/search?word=${word}`
 2. `Controller === searchController.getWord()`
 
+### Auto Complete
 
+1. `API === localhost:3000/api/autocomplete?word=${word}`
+2. `Controller === autoCompleteController.autoComplete()`
 
 # Resources
 
 1. http://norvig.com/spell-correct.html
 2. https://github.com/WillSen/spellchecker-autocorrect
+3. https://gist.github.com/tpae/72e1c54471e88b689f85ad2b3940a8f0
