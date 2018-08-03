@@ -66,15 +66,10 @@ function correctWord (word) {
 
   let maxCount = 0
   let correctWord = word
-  let editDistance1Words = editDistance1(word)
-  // console.log('editDistance1Words ====>', editDistance1Words)
-  let editDistance2Words = []
-  for (var i = 0; i < editDistance1Words.length; i++) {
-    editDistance2Words = editDistance2Words.concat(editDistance1(editDistance1Words[i]))
-  }
+  const editDistance1Words = editDistance1(word)
+  const editDistance2Words = editDistance1Words.reduce((acc, cur) => acc.concat(cur), [])
 
   for (var i = 0; i < editDistance1Words.length; i++) {
-    console.log('editDistance1Words[i] ==--=-=-=-=-=-=', editDistance1Words[i])
     if (editDistance1Words[i] in WORD_COUNTS) {
       if (WORD_COUNTS[editDistance1Words[i]] > maxCount) {
         maxCount = WORD_COUNTS[editDistance1Words[i]]
@@ -82,7 +77,7 @@ function correctWord (word) {
       }
     }
   }
-  console.log('========================================================================')
+
   let maxCount2 = 0
   let correctWord2 = correctWord
 
@@ -95,34 +90,29 @@ function correctWord (word) {
     }
   }
 
-  // console.log('--------------------------')
-  // console.log('correct word 11111111111', correctWord)
-  // console.log('correct word -=-=-=-=-=-22222==--=-==-=-', correctWord2)
-  // console.log('--------------------------')
-  // console.log('maxCount ===>', maxCount)
-  // console.log('maxCount2 ==========>', maxCount2)
-  // console.log('--------------------------')
-  if (maxCount2 > maxCount) {
-    return correctWord2
+  if (word.length < 6) {
+    if (maxCount2 > 100 * maxCount) {
+      return correctWord2
+    }
+    return correctWord
+  } else {
+    if (maxCount2 > 4 * maxCount) {
+      return correctWord2
+    }
+    return correctWord
   }
-  return correctWord
-// if (word.length < 6) {
-//   if (maxCount2 > 100 * maxCount) {
-//     return correctWord2
-//   }
-//   return correctWord
-// } else {
-//   if (maxCount2 > 4 * maxCount) {
-//     return correctWord2
-//   }
-//   return correctWord
-// }
+}
+
+function autoComplete (arr, word) {
+  return arr.filter((cur) => {
+    return new RegExp(`^${word}`).test(cur)
+  })
 }
 
 exports.getWord = (req, res) => {
   try {
     const queryCondition = correctWord(req.query.word)
-    console.log('queryCondition', queryCondition)
+    const autoCompleteData = autoComplete(words, req.query.word)
     res.json({ spellcheck: queryCondition, success: true, error: false})
   } catch (error) {
     res.json({ message: error, success: false, error: true})
