@@ -9,10 +9,9 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 # Node running on port 5000 ---- React running on port 3000
 
 Go to server/controllers/search.controller.js
-    1. API === localhost:3000/api/search?word=${word}
-    2. Controller === searchController.getWord()
+    1. `API === localhost:3000/api/search?word=${word}`
+    2. `Controller === searchController.getWord()`
 
-Go to client/src/app.js
 
 
 # Resources
