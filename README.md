@@ -1,4 +1,4 @@
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app). [MERN-boilerplate](https://github.com/thejohnyu/MERN-boilerplate.git)
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app) && [MERN-boilerplate](https://github.com/thejohnyu/MERN-boilerplate.git)
 
 
 1. `git clone https://github.com/thejohnyu/word-search.git`
