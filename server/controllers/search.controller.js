@@ -1,5 +1,4 @@
 const words = require('./words')
-
 const alphabet = 'abcdefghijklmnopqrstuvwxyz'
 const WORD_COUNTS = HashObj(words)
 
@@ -67,7 +66,7 @@ function correctWord (word) {
   let maxCount = 0
   let correctWord = word
   const editDistance1Words = editDistance1(word)
-  const editDistance2Words = editDistance1Words.reduce((acc, cur) => acc.concat(cur), [])
+  const editDistance2Words = editDistance1Words.reduce((acc, cur) => acc.concat(editDistance1(cur)), [])
 
   for (var i = 0; i < editDistance1Words.length; i++) {
     if (editDistance1Words[i] in WORD_COUNTS) {
