@@ -59,7 +59,7 @@ function editDistance1 (string) {
   return results
 }
 
-function correct (word) {
+function correctWord (word) {
   if (word in WORD_COUNTS) {
     return word
   }
@@ -121,7 +121,7 @@ function correct (word) {
 
 exports.getWord = (req, res) => {
   try {
-    const queryCondition = correct(req.query.word)
+    const queryCondition = correctWord(req.query.word)
     console.log('queryCondition', queryCondition)
     res.json({ spellcheck: queryCondition, success: true, error: false})
   } catch (error) {
